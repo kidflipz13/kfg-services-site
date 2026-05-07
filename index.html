@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KFG Services | Small Package Delivery & Scheduled Routes</title>
+  <meta name="description" content="KFG Services provides reliable small package delivery, scheduled pickup routes, and one-time local deliveries." />
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6b7a;
+      --accent: #c62828;
+      --accent-dark: #991b1b;
+      --dark: #111827;
+      --line: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+    }
+
+    .brand-mark {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffffff 38%, #ef4444 39%, #991b1b 70%);
+      color: #111827;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+
+    .nav-cta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--accent-dark); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--dark);
+      border-color: var(--line);
+    }
+
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    main { flex: 1; }
+
+    .hero {
+      padding: 80px 6% 60px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.05;
+      margin: 0 0 22px;
+      color: var(--dark);
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: var(--muted);
+      margin-bottom: 30px;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .trust-line {
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .service-card {
+      background: var(--card);
+      border-radius: 28px;
+      padding: 34px;
+      box-shadow: 0 20px 55px rgba(17, 24, 39, 0.12);
+      border: 1px solid var(--line);
+    }
+
+    .service-card h2 {
+      margin-top: 0;
+      color: var(--dark);
+      font-size: 28px;
+    }
+
+    .service-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .service-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .service-list li:last-child { border-bottom: none; }
+
+    .check {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .sections {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 6% 70px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px;
+    }
+
+    .info-box h3 {
+      margin-top: 0;
+      color: var(--dark);
+      font-size: 22px;
+    }
+
+    .info-box p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    .contact {
+      background: var(--dark);
+      color: white;
+      padding: 58px 6%;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      margin: 0 0 12px;
+    }
+
+    .contact p {
+      color: #d1d5db;
+      max-width: 690px;
+      margin: 0 auto 26px;
+      font-size: 18px;
+    }
+
+    .contact .btn-secondary {
+      color: white;
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .contact .btn-secondary:hover {
+      border-color: white;
+      color: white;
+    }
+
+    footer {
+      background: #0b1220;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 20px 6%;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .nav-cta { justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; padding-top: 50px; }
+      .sections { grid-template-columns: 1fr; }
+      .btn { width: 100%; text-align: center; }
+      .hero-actions, .contact-actions { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">
+        <!-- Replace the placeholder below with your uploaded logo file, for example: <img src="kfg-logo.png" alt="KFG Services logo"> -->
+        <img src="KFG_Logo_Transparent.png" alt="KFG Services logo" style="width: 180px; height: auto; object-fit: contain;" />
+        <div>KFG Services</div>
+      </div>
+      <div class="nav-cta">
+        <a class="btn btn-secondary" href="mailto:kidflipz13@kidflipzgs.com?subject=Delivery%20Quote%20Request">Request Quote</a>
+        <a class="btn btn-primary" href="tel:5138072813">Call / Text</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Small Package Delivery • Scheduled Routes • One-Time Pickups</div>
+          <h1>Reliable local delivery without the guesswork.</h1>
+          <p>KFG Services helps businesses keep packages moving with scheduled pickup routes, same-day small package deliveries, and one-time pickups when you need extra support.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="sms:5138072813?&body=Hi%20KFG%20Services%2C%20I%27d%20like%20to%20request%20a%20delivery%20quote.">Text for a Quote</a>
+            <a class="btn btn-secondary" href="mailto:kidflipz13@kidflipzgs.com?subject=Delivery%20Quote%20Request&body=Hi%20KFG%20Services%2C%0A%0AI%27d%20like%20to%20request%20a%20quote%20for%3A%0A%0A-%20Scheduled%20route%0A-%20One-time%20pickup%0A%0APickup%20address%3A%0ADrop-off%20address%3A%0APreferred%20time%3A%0APackage%20details%3A%0A%0AThank%20you!">Email Quote Request</a>
+          </div>
+          <div class="trust-line">Serving local businesses that need dependable pickup and delivery help.</div>
+        </div>
+
+        <div class="service-card">
+          <h2>What We Do</h2>
+          <ul class="service-list">
+            <li><span class="check">✓</span><span><strong>Scheduled daily routes</strong><br />Set pickup times so your staff knows exactly when packages are moving.</span></li>
+            <li><span class="check">✓</span><span><strong>One-time pickups</strong><br />Need a package delivered today? Reach out for a quote.</span></li>
+            <li><span class="check">✓</span><span><strong>Small package delivery</strong><br />Great for documents, office items, parts, supplies, and local drop-offs.</span></li>
+            <li><span class="check">✓</span><span><strong>Reliable communication</strong><br />Clear pickup scheduling with no guessing or wondering.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="sections">
+        <div class="info-box">
+          <h3>Free Up Your Staff</h3>
+          <p>Keep your team focused instead of pulling them away for small delivery runs.</p>
+        </div>
+        <div class="info-box">
+          <h3>Route Scheduling</h3>
+          <p>Get added to an existing route or request a regular pickup schedule that fits your business.</p>
+        </div>
+        <div class="info-box">
+          <h3>Fast Local Service</h3>
+          <p>Simple, dependable pickup and drop-off help for businesses that need packages delivered.</p>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <h2>Request a delivery quote</h2>
+        <p>Ask about getting added to a route, scheduling a recurring pickup, or booking a one-time local delivery.</p>
+        <div class="hero-actions contact-actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="sms:5138072813?&body=Hi%20KFG%20Services%2C%20I%27d%20like%20to%20request%20a%20delivery%20quote.">Text / Call 513-807-2813</a>
+          <a class="btn btn-secondary" href="mailto:kidflipz13@kidflipzgs.com?subject=Delivery%20Quote%20Request">Email KFG Services</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © 2026 KFG Services. Small package delivery, scheduled routes, and local pickup support.
+    </footer>
+  </div>
+</body>
+</html>
